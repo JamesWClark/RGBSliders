@@ -1,0 +1,61 @@
+<style>
+  html, body {
+    padding: 0;
+    margin: 0;
+    background-color: 000;
+  }
+  #controls {
+    background-color: white;
+    padding: 20px;
+  }
+  input {
+    width: 150px;
+  }
+  #rtext, #gtext, #btext {
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+  }
+</style>
+
+<div id="controls">
+  <span>RED: </span><input id="r" type="range" min="0" max="255" step="1" value="0"><span id="rtext">0</span>
+  <span>GREEN: </span><input id="g" type="range" min="0" max="255" step="1" value="0"><span id="gtext">0</span>
+  <span>BLUE: </span><input id="b" type="range" min="0" max="255" step="1" value="0"><span id="btext">0</span>
+</div>
+
+<script>
+  var r = 0;
+  var g = 0;
+  var b = 0;
+  
+  var rSlider = document.getElementById('r');
+  var gSlider = document.getElementById('g');
+  var bSlider = document.getElementById('b');
+  
+  var rText = document.getElementById('rtext');
+  var gText = document.getElementById('gtext');
+  var bText = document.getElementById('btext');
+
+  rSlider.oninput = function() {
+    r = this.value;
+    rText.innerHTML = r;
+    setBackground();
+  };
+  
+  gSlider.oninput = function() {
+    g = this.value;
+    gText.innerHTML = g;
+    setBackground();
+  };
+
+  bSlider.oninput = function() {
+    b = this.value;
+    bText.innerHTML = b;
+    setBackground();
+  };
+  
+  function setBackground() {
+    document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+  }
+</script>
